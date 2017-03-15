@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var path = require('path');
 
 module.exports = {
@@ -9,8 +10,8 @@ module.exports = {
   },
 
   output: {
-    filename: '[name].js', // '[chunkhash].[name].js',
-    path: path.resolve(__dirname, 'dist/js/')
+    filename: 'js/[name].js', // '[chunkhash].[name].js',
+    path: path.resolve(__dirname, 'dist/')
   },
 
   module: {
@@ -24,11 +25,19 @@ module.exports = {
   },
 
   plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-          name: ['vendor'/*, 'manifest'*/]
-      })
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor'/*, 'manifest'*/]
+    }),
+    new CopyWebpackPlugin([
+      { from: 'src/index.html', to: 'index.html' }
+    ])
   ],
 
-  devtool: 'source-map'
+  devtool: 'source-map',
+
+  devServer: {
+    host: 'localhost',
+    port: 9000
+  }
 
 };
