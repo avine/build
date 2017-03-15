@@ -1,0 +1,35 @@
+{
+  "name": "build",
+  "version": "0.0.1",
+  "description": "Build tools scaffolding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "shx rm -rf dist/",
+    "copy": "shx mkdir dist/ && shx cp src/index.html dist/index.html",
+    "webpack": "webpack --config webpack.config.js",
+    "build": "npm run clean && npm run copy && npm run webpack",
+    "start": "http-server dist/ -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avine/build.git"
+  },
+  "author": "avine <s.francel@avine.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avine/build/issues"
+  },
+  "homepage": "https://github.com/avine/build#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.0",
+    "babel-preset-env": "^1.2.1",
+    "http-server": "^0.9.0",
+    "shx": "^0.2.2",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
