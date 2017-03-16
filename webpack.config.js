@@ -2,11 +2,8 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractLess = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
-    disable: process.env.NODE_ENV === "development"
-});
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractLess = new ExtractTextPlugin({ filename: '[name].css' });
 
 module.exports = {
 
@@ -17,28 +14,22 @@ module.exports = {
   },
 
   output: {
-    filename: 'js/[name].js', // '[chunkhash].[name].js',
+    filename: 'js/[name].js',
     path: path.resolve(__dirname, 'dist/')
   },
 
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
-      loader: 'babel-loader'
+      use: 'babel-loader'
     }, {
       test: /\.less$/,
       exclude: /(node_modules|bower_components)/,
-      //loader: ['css-loader', 'less-loader'],
-      loader: extractLess.extract({
-        use: [{
-          loader: "css-loader"
-        }, {
-          loader: "less-loader"
-        }]
+      use: extractLess.extract({
+        use: ['css-loader', 'less-loader']
       })
     }]
-
   },
 
   plugins: [
