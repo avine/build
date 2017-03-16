@@ -8,7 +8,8 @@
     "clean": "shx rm -rf dist/",
     "webpack": "webpack",
     "build": "npm run clean && npm run webpack",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "sandbox": "./sandbox/launch.sh"
   },
   "repository": {
     "type": "git",
