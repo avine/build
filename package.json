@@ -9,7 +9,7 @@
     "webpack": "webpack",
     "build": "npm run clean && npm run webpack",
     "start": "webpack-dev-server --open",
-    "sandbox": "./sandbox/launch.sh"
+    "sandbox": "./webpack.launcher.sh"
   },
   "repository": {
     "type": "git",

@@ -6,7 +6,7 @@ let directory = __dirname.match(/[^\/\\]+$/)[0];
 module.exports = {
 
   entry: {
-    bundle: './src/js/class.js'
+    bundle: './src/js/msg.js'
   },
 
   output: {
@@ -31,8 +31,7 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    host: 'localhost',
-    port: 9000
+    host: '127.0.0.1'
   }
 
 };
